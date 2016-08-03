@@ -5,7 +5,9 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +20,10 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import android.view.View.OnClickListener;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSelect;
     private ImageView ivImage;
     private String userChoosenTask;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         ivImage = (ImageView) findViewById(R.id.ivImage);
         btnSelect = (Button) findViewById(R.id.btnSelectPhoto);
+        textView = (TextView) findViewById(R.id.textView);
+
         btnSelect.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -155,8 +164,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        Uri uri = data.getData();
+        String path = getImagePath(uri);
+
+        textView.setText(path);
         ivImage.setImageBitmap(bm);
     }
+
+
+    public String getImagePath(Uri contentUri) {
+        String[] campos = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(contentUri, campos, null, null, null);
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA));
+        cursor.close();
+        return path;
+    }
+
 
 
 

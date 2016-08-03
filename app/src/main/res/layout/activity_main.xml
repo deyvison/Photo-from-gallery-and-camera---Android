@@ -22,7 +22,7 @@
             android:id="@+id/btnSelectPhoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Photo" />
+            android:text="Selecionar Foto" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,6 +41,15 @@
         android:src="@mipmap/ic_launcher"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/ivImage"
+        android:layout_alignStart="@+id/ivImage" />
 
 
 </RelativeLayout>
