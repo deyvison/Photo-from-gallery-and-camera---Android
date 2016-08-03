@@ -168,7 +168,12 @@ public class MainActivity extends AppCompatActivity {
         String path = getImagePath(uri);
 
         textView.setText(path);
-        ivImage.setImageBitmap(bm);
+        Picasso
+                .with(this)
+                .load(uri)
+                .resize(200,200)
+                .into(ivImage);
+        //ivImage.setImageBitmap(bm);
     }
 
 
