@@ -107,8 +107,9 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);//
-        startActivityForResult(Intent.createChooser(intent, "Selecione o arquivo"),SELECT_FILE);
+        //intent.setAction(Intent.ACTION_GET_CONTENT);//
+        intent.setAction(Intent.ACTION_PICK);
+        startActivityForResult(Intent.createChooser(intent, "Selecione a imagem"),SELECT_FILE);
     }
 
     private void cameraIntent()
