@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp" >
+        android:padding="5dp"
+        android:id="@+id/linearLayout">
 
         <Button
             android:id="@+id/btnSelectPhoto"
@@ -39,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -50,6 +51,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/ivImage"
         android:layout_alignStart="@+id/ivImage" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@mipmap/ic_launcher"
+        android:layout_above="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginBottom="144dp" />
 
 
 </RelativeLayout>

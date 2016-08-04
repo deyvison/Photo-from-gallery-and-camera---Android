@@ -39,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
     private String userChoosenTask;
     private TextView textView;
 
+    private ImageView ivImage2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ivImage = (ImageView) findViewById(R.id.ivImage);
+        ivImage2 = (ImageView) findViewById(R.id.imageView2);
         btnSelect = (Button) findViewById(R.id.btnSelectPhoto);
         textView = (TextView) findViewById(R.id.textView);
 
@@ -167,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
         Uri uri = data.getData();
         String path = getImagePath(uri);
-
+        // guardar o path e o uri no banco
         textView.setText(path);
         Picasso
                 .with(this)
@@ -175,6 +177,12 @@ public class MainActivity extends AppCompatActivity {
                 .resize(200,200)
                 .into(ivImage);
         //ivImage.setImageBitmap(bm);
+
+        Picasso
+                .with(this)
+                .load(new File(path))
+                .resize(200,200)
+                .into(ivImage2);
     }
 
 
